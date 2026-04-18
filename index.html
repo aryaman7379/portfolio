@@ -1,471 +1,1360 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryaman Singh — Senior Frontend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdfcf9;
+    --bg2: #f4f1ec;
+    --bg3: #e8e3da;
+    --line: rgba(51,65,85,0.09);
+    --line2: rgba(51,65,85,0.16);
+    --text: #1e2530;
+    --muted: #8292a8;
+    --accent: #0f766e;
+    --accent2: #1d4ed8;
+    --accent3: #be123c;
+    --accent4: #b45309;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Syne', sans-serif;
+    --serif: 'Instrument Serif', serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-    <title>Aryaman Singh</title>
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="https://raw.githubusercontent.com/Vaibhav-Sharma-1/personal-site/main/favicon1.ico"
-    />
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
 
-    <link rel="stylesheet" href="./css/footer.css" />
-    <link rel="stylesheet" href="./css/contact.css" />
-    <link rel="stylesheet" href="./css/projects.css" />
-    <link rel="stylesheet" href="./css/skills.css" />
-    <link rel="stylesheet" href="./css/education.css" />
-    <link rel="stylesheet" href="./css/about.css" />
-    <link rel="stylesheet" href="./css/banner.css" />
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/loader.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(253,252,249,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: var(--muted);
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(15,118,110,0.35); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(15,118,110,0); }
+  }
 
-    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="./js/index.js"></script>
-    <script defer src="./js/iconsHover.js"></script>
-    <!-- <script defer src="./js/scrollAnimations.js"></script> -->
-  </head>
+  /* SECTIONS */
+  section { padding: 120px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
 
-  <body>
-    <section id="preloader">
-      <div class="loader">
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
+  /* GRID LINES BACKGROUND */
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 0;
+    overflow: hidden;
+  }
+  .hero-grid { position: absolute; inset: 0; }
+  .hero-grid::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .hero-grid::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(15,118,110,0.05) 0%, transparent 70%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 0 48px; max-width: 1100px; margin: 0 auto; width: 100%; }
+  
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 0.12em;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow::before { content: '// '; color: var(--accent); }
+  
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 8px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-name span { color: var(--accent); }
+
+  .hero-role {
+    font-family: var(--mono);
+    font-size: clamp(13px, 1.5vw, 16px);
+    color: var(--muted);
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-role .typed { color: var(--accent2); }
+
+  .hero-metrics {
+    display: flex; gap: 48px;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .metric { border-left: 1px solid var(--line2); padding-left: 20px; }
+  .metric-val {
+    font-family: var(--display);
+    font-size: 32px; font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .metric-val span { color: var(--accent); }
+  .metric-label { font-size: 11px; color: var(--muted); margin-top: 4px; letter-spacing: 0.05em; }
+
+  .hero-cta {
+    display: flex; gap: 16px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 13px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+  }
+  .btn-primary:hover { background: #5ffab0; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line2);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-terminal {
+    position: absolute;
+    right: 48px; top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    background: #f0ede8;
+    border: 1px solid var(--line2);
+    border-radius: 8px;
+    overflow: hidden;
+    animation: fadeLeft 0.8s 0.5s ease both;
+    display: none;
+  }
+  @media (min-width: 1200px) { .hero-terminal { display: block; } }
+  .terminal-bar {
+    background: #e3ddd6;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; } .dot-y { background: #ffbd2e; } .dot-g { background: #28c840; }
+  .terminal-bar span { font-size: 11px; color: var(--muted); margin-left: auto; }
+  .terminal-body { padding: 20px; font-size: 12px; line-height: 2; }
+  .t-prompt { color: var(--accent); }
+  .t-cmd { color: var(--text); }
+  .t-out { color: var(--muted); }
+  .t-green { color: #0f766e; }
+  .t-blue { color: #1d4ed8; }
+  .t-yellow { color: #b45309; }
+  .t-red { color: #be123c; }
+  .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--accent); animation: blink 1s infinite; vertical-align: middle; }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeLeft { from { opacity: 0; transform: translate(24px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+
+  /* ===== SECTION HEADER ===== */
+  .section-header {
+    display: flex; align-items: flex-end; gap: 24px;
+    margin-bottom: 64px;
+  }
+  .section-num { font-family: var(--mono); font-size: 11px; color: var(--accent); opacity: 0.6; }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--line2); margin-bottom: 8px; }
+
+  /* ===== ABOUT ===== */
+  #about { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about-text p { color: #3d4f63; line-height: 1.9; margin-bottom: 20px; font-size: 14px; }
+  .about-text p strong { color: var(--accent); font-weight: 600; }
+  .about-highlights { display: grid; gap: 12px; }
+  .highlight-card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px 20px;
+    display: flex; align-items: flex-start; gap: 16px;
+    transition: border-color 0.2s;
+  }
+  .highlight-card:hover { border-color: var(--line2); }
+  .highlight-icon { font-family: var(--mono); font-size: 11px; color: var(--accent); opacity: 0.8; min-width: 20px; }
+  .highlight-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .highlight-text strong { color: var(--text); font-weight: 400; display: block; margin-bottom: 2px; }
+
+  /* ===== SKILLS ===== */
+  #skills { background: var(--bg2); position: relative; overflow: hidden; }
+  #skills::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .skill-category {
+    background: var(--bg2);
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+  .skill-category:hover { background: var(--bg3); }
+  .skill-cat-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .skill-cat-title {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+  .tag-default { background: rgba(51,65,85,0.05); color: var(--muted); border: 1px solid var(--line); }
+  .tag-accent { background: rgba(15,118,110,0.07); color: #0a5c55; border: 1px solid rgba(15,118,110,0.18); }
+  .tag-blue { background: rgba(29,78,216,0.07); color: #1e3fa3; border: 1px solid rgba(29,78,216,0.15); }
+  .tag-yellow { background: rgba(180,83,9,0.07); color: #92400e; border: 1px solid rgba(180,83,9,0.15); }
+
+  /* ===== EXPERIENCE ===== */
+  #experience { background: var(--bg); }
+  .exp-timeline { position: relative; }
+  .exp-timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--line2);
+  }
+  .exp-item {
+    padding-left: 40px;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute; left: -4px; top: 6px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+  }
+  .exp-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+  .exp-company {
+    font-family: var(--display);
+    font-size: 17px; font-weight: 600;
+    color: var(--text);
+  }
+  .exp-period { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .exp-role { font-size: 12px; color: var(--accent2); font-family: var(--mono); margin-bottom: 20px; }
+  .exp-projects { display: grid; gap: 10px; }
+  .exp-project {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 16px 20px;
+    transition: border-color 0.2s;
+  }
+  .exp-project:hover { border-color: var(--line2); }
+  .exp-project-title { font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 6px; font-family: var(--display); }
+  .exp-project-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .metric-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    font-size: 10px;
+    font-family: var(--mono);
+    padding: 3px 9px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+  .chip-green { background: rgba(15,118,110,0.08); color: #0f5954; border: 1px solid rgba(15,118,110,0.18); }
+  .chip-blue { background: rgba(29,78,216,0.07); color: #1d3fa8; border: 1px solid rgba(29,78,216,0.15); }
+  .chip-yellow { background: rgba(180,83,9,0.07); color: #92400e; border: 1px solid rgba(180,83,9,0.15); }
+  .chip-red { background: rgba(190,18,60,0.07); color: #9f1239; border: 1px solid rgba(190,18,60,0.15); }
+
+  /* ===== PROJECTS ===== */
+  #projects { background: var(--bg2); position: relative; overflow: hidden; }
+  #projects::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+  }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .project-card {
+    background: var(--bg2);
+    padding: 32px 28px;
+    display: flex; flex-direction: column;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { background: var(--bg3); }
+  .project-card:hover .project-arrow { transform: translate(3px, -3px); }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .project-num { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .project-arrow { font-size: 18px; color: var(--muted); transition: transform 0.2s; }
+  .project-title {
+    font-family: var(--display);
+    font-size: 20px; font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .project-subtitle { font-size: 11px; color: var(--accent); font-family: var(--mono); margin-bottom: 16px; letter-spacing: 0.06em; }
+  .project-section-label { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 6px; margin-top: 14px; }
+  .project-desc { font-size: 12px; color: rgba(30,37,48,0.6); line-height: 1.7; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 20px; }
+
+  /* ===== SEO SHOWCASE ===== */
+  #seo { background: var(--bg); }
+  .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .seo-card {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .seo-card:hover { border-color: var(--line2); }
+  .seo-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .seo-card.green::before { background: var(--accent); }
+  .seo-card.blue::before { background: var(--accent2); }
+  .seo-card.yellow::before { background: var(--accent4); }
+  .seo-card.red::before { background: var(--accent3); }
+  .seo-card-title {
+    font-family: var(--display);
+    font-size: 16px; font-weight: 600;
+    color: var(--text); margin-bottom: 12px;
+  }
+  .seo-card-desc { font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .seo-card-desc code {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: rgba(51,65,85,0.07);
+    padding: 1px 6px; border-radius: 3px;
+    color: var(--accent);
+  }
+  .seo-score-row { display: flex; gap: 16px; margin-top: 16px; }
+  .seo-score {
+    flex: 1; text-align: center;
+    background: rgba(51,65,85,0.04);
+    border: 1px solid var(--line); border-radius: 6px; padding: 12px 8px;
+  }
+  .seo-score-val { font-family: var(--display); font-size: 24px; font-weight: 700; }
+  .seo-score-val.green { color: var(--accent); }
+  .seo-score-val.blue { color: var(--accent2); }
+  .seo-score-val.yellow { color: var(--accent4); }
+  .seo-score-label { font-size: 10px; color: var(--muted); margin-top: 3px; letter-spacing: 0.06em; }
+
+  /* ===== PERF DASHBOARD ===== */
+  #perf { background: var(--bg2); }
+  #perf::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent4), transparent); }
+  #perf { position: relative; overflow: hidden; }
+  .perf-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+  .perf-card {
+    background: var(--bg3);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px 20px;
+    transition: border-color 0.2s;
+  }
+  .perf-card:hover { border-color: var(--line2); }
+  .perf-metric-label { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 10px; }
+  .perf-before-after { display: flex; align-items: center; gap: 12px; }
+  .perf-before { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--accent3); text-decoration: line-through; opacity: 0.5; }
+  .perf-arrow { color: var(--muted); font-size: 14px; }
+  .perf-after { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--accent); }
+  .perf-unit { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .perf-bar-row { margin-top: 20px; }
+  .perf-bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .perf-bar { height: 4px; background: var(--line2); border-radius: 2px; overflow: hidden; }
+  .perf-bar-fill { height: 100%; border-radius: 2px; background: var(--accent); transition: width 1s ease; }
+
+  /* ===== TECH STACK ===== */
+  #stack { background: var(--bg); }
+  .stack-section-title { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 2px; }
+  .stack-item {
+    background: var(--bg2);
+    padding: 18px 16px;
+    transition: background 0.2s;
+  }
+  .stack-item:hover { background: var(--bg3); }
+  .stack-item-name { font-size: 13px; color: var(--text); font-family: var(--display); font-weight: 600; margin-bottom: 4px; }
+  .stack-item-role { font-size: 11px; color: var(--muted); }
+
+  /* ===== FOLDER STRUCTURE ===== */
+  .folder-tree {
+    background: var(--bg2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .folder-header {
+    background: var(--bg3);
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .folder-body { padding: 20px 24px; font-size: 12px; line-height: 2.1; }
+  .f-dir { color: var(--accent2); }
+  .f-file { color: var(--muted); }
+  .f-comment { color: rgba(51,65,85,0.28); }
+  .f-accent { color: var(--accent); }
+  .indent1 { padding-left: 20px; }
+  .indent2 { padding-left: 40px; }
+  .indent3 { padding-left: 60px; }
+
+  /* ===== CTA FOOTER ===== */
+  #contact {
+    background: var(--bg);
+    text-align: center;
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(15,118,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-label { font-size: 11px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 16px; }
+  .contact-title {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .contact-sub { font-size: 13px; color: var(--muted); margin-bottom: 40px; }
+  .contact-links { display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .contact-link {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-divider { color: var(--line2); }
+
+  /* ===== ROADMAP ===== */
+  #roadmap { background: var(--bg2); }
+  .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .roadmap-phase {
+    background: var(--bg2);
+    padding: 24px 20px;
+  }
+  .phase-label { font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+  .phase-name { font-family: var(--display); font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+  .phase-items { list-style: none; }
+  .phase-items li {
+    font-size: 11px; color: var(--muted); line-height: 1.9;
+    padding-left: 14px; position: relative;
+  }
+  .phase-items li::before { content: '→'; position: absolute; left: 0; color: var(--accent); opacity: 0.5; font-size: 10px; }
+
+  /* ===== FLOATING WORDS ===== */
+  .floating-words {
+    position: absolute; inset: 0;
+    pointer-events: none; overflow: hidden; z-index: 0;
+  }
+  .fw {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    opacity: 0;
+    white-space: nowrap;
+    animation: floatWord linear infinite;
+    color: var(--accent);
+  }
+  .fw.slate { color: var(--accent2); }
+  .fw.warm  { color: var(--accent4); }
+  @keyframes floatWord {
+    0%   { opacity: 0;    transform: translateY(0px) translateX(0px); }
+    8%   { opacity: 0.18; }
+    85%  { opacity: 0.12; }
+    100% { opacity: 0;    transform: translateY(-110px) translateX(18px); }
+  }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 24px; }
+    .container { padding: 0 24px; }
+    .about-grid, .seo-grid, .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .perf-grid { grid-template-columns: 1fr; }
+    .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-metrics { flex-direction: column; gap: 20px; }
+    section { padding: 80px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">AS.dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#seo">quality</a></li>
+    <li><a href="#stack">stack</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    available for opportunities
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="floating-words" id="floating-words"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">aryaman singh &nbsp;·&nbsp; senior frontend engineer &nbsp;·&nbsp; 4 yrs exp</div>
+    <h1 class="hero-name">Building<br><span>fast</span>, scalable<br>frontends.</h1>
+    <div class="hero-role">
+      <span class="typed" id="typed-text"></span><span class="t-cursor"></span>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-val"><span>40</span>%</div>
+        <div class="metric-label">PageSpeed Score Boost</div>
       </div>
-    </section>
+      <div class="metric">
+        <div class="metric-val"><span>300</span>ms</div>
+        <div class="metric-label">Load Time Reduction</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val"><span>25</span>%</div>
+        <div class="metric-label">Organic Traffic Growth</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val"><span>100K</span></div>
+        <div class="metric-label">Monthly Users Served</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">→ view work</a>
+      <a href="mailto:aryamanyash11@gmail.com" class="btn btn-outline">get in touch</a>
+    </div>
+  </div>
+  <div class="hero-terminal">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+      <span>performance.audit</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="t-prompt">$</span> <span class="t-cmd">next build</span></div>
+      <div class="t-out">Creating optimized build...</div>
+      <div><span class="t-green">✓</span> <span class="t-out">Route (app)</span></div>
+      <div><span class="t-green">○</span> <span class="t-blue">/</span> <span class="t-out">SSG — 0.4kB</span></div>
+      <div><span class="t-green">●</span> <span class="t-blue">/products/[slug]</span> <span class="t-out">ISR</span></div>
+      <div class="t-out">─────────────────────</div>
+      <div><span class="t-prompt">$</span> <span class="t-cmd">lighthouse --url /</span></div>
+      <div><span class="t-green">Performance:</span> <span class="t-yellow">97</span></div>
+      <div><span class="t-green">SEO:</span> <span class="t-yellow">100</span></div>
+      <div><span class="t-green">Accessibility:</span> <span class="t-yellow">98</span></div>
+      <div><span class="t-green">Best Practices:</span> <span class="t-yellow">100</span></div>
+      <div><span class="t-out">FCP: </span><span class="t-green">0.8s</span> <span class="t-out">LCP: </span><span class="t-green">1.2s</span> <span class="t-out">CLS: </span><span class="t-green">0.0</span></div>
+      <div><span class="t-prompt">$</span> <span class="t-cursor"></span></div>
+    </div>
+  </div>
+</section>
 
-    <header>
-      <div class="navbar-logo">
-        <a href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            class="home"
-          >
-            <path
-              d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z"
-            />
-          </svg>
-        </a>
-        <a href="#" class="logo">Portfolio</a>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a <strong>Senior Frontend Engineer</strong> with 4 years of experience building production-grade web applications that balance engineering rigor with measurable business impact.</p>
+        <p>My work spans from architecting <strong>SSR/ISR systems in Next.js</strong> to implementing performance budgets that directly move Core Web Vitals needles. I don't just build UIs — I build systems that scale, load fast, and get found by search engines.</p>
+        <p>At India Today Group, I led frontend delivery for multiple high-traffic editorial platforms, rebuilding sites from scratch with <strong>modern rendering strategies</strong> and cutting FCP by up to 40% in the process. At Nutrabay, I'm currently optimizing e-commerce performance with CDN strategies, image pipelines, and lazy loading architectures.</p>
+        <p>I care deeply about the <strong>intersection of DX and UX</strong> — clean TypeScript, maintainable architecture, and interfaces that feel instant.</p>
+      </div>
+      <div class="about-highlights reveal">
+        <div class="highlight-card">
+          <span class="highlight-icon">⚡</span>
+          <div class="highlight-text"><strong>Performance engineering</strong>Reduced load times by 300ms and FCP by 40% across multiple production apps using SSR, HTTP caching, and CDN optimization.</div>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon">🔍</span>
+          <div class="highlight-text"><strong>SEO architecture</strong>Implemented structured data, metadata automation, and crawlability strategies. Drove 25% organic traffic increase via technical SEO on Aajtakcampus rebuild.</div>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon">🏗</span>
+          <div class="highlight-text"><strong>Scalable UI systems</strong>Built config-driven UIs and component libraries enabling rapid feature rollout across editorial platforms with 100K+ monthly users.</div>
+        </div>
+        <div class="highlight-card">
+          <span class="highlight-icon">🛡</span>
+          <div class="highlight-text"><strong>Reliability at scale</strong>Implemented Redis + Akamai CDN layer enabling 99.99% uptime on Harper's Bazaar at 100K monthly users with consistently low TBT.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-category">
+        <div class="skill-cat-label">// 01</div>
+        <div class="skill-cat-title">Frontend Architecture</div>
+        <div class="skill-tags">
+          <span class="tag tag-accent">React.js</span>
+          <span class="tag tag-accent">Next.js</span>
+          <span class="tag tag-default">TypeScript</span>
+          <span class="tag tag-default">Redux</span>
+          <span class="tag tag-default">React Query</span>
+          <span class="tag tag-default">Redux Saga</span>
+          <span class="tag tag-default">Component Design</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">// 02</div>
+        <div class="skill-cat-title">Next.js Ecosystem</div>
+        <div class="skill-tags">
+          <span class="tag tag-blue">App Router</span>
+          <span class="tag tag-blue">SSR</span>
+          <span class="tag tag-blue">SSG</span>
+          <span class="tag tag-blue">ISR</span>
+          <span class="tag tag-default">API Routes</span>
+          <span class="tag tag-default">Middleware</span>
+          <span class="tag tag-default">Image Optimization</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">// 03</div>
+        <div class="skill-cat-title">Performance Optimization</div>
+        <div class="skill-tags">
+          <span class="tag tag-yellow">Core Web Vitals</span>
+          <span class="tag tag-yellow">Lazy Loading</span>
+          <span class="tag tag-default">HTTP Caching</span>
+          <span class="tag tag-default">CDN</span>
+          <span class="tag tag-default">Web Workers</span>
+          <span class="tag tag-default">Debouncing</span>
+          <span class="tag tag-default">Bundle Analysis</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">// 04</div>
+        <div class="skill-cat-title">SEO Engineering</div>
+        <div class="skill-tags">
+          <span class="tag tag-accent">Schema Markup</span>
+          <span class="tag tag-accent">Structured Data</span>
+          <span class="tag tag-default">Metadata Automation</span>
+          <span class="tag tag-default">Open Graph</span>
+          <span class="tag tag-default">GSC</span>
+          <span class="tag tag-default">Crawlability</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">// 05</div>
+        <div class="skill-cat-title">Design Systems</div>
+        <div class="skill-tags">
+          <span class="tag tag-default">Tailwind CSS</span>
+          <span class="tag tag-default">CSS Modules</span>
+          <span class="tag tag-default">Component APIs</span>
+          <span class="tag tag-default">Accessibility</span>
+          <span class="tag tag-default">Responsive Design</span>
+          <span class="tag tag-default">Mobile-first</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">// 06</div>
+        <div class="skill-cat-title">Tooling & DevEx</div>
+        <div class="skill-tags">
+          <span class="tag tag-default">Webpack</span>
+          <span class="tag tag-default">Babel</span>
+          <span class="tag tag-default">Jest</span>
+          <span class="tag tag-default">Docker</span>
+          <span class="tag tag-default">AWS</span>
+          <span class="tag tag-default">Node.js</span>
+          <span class="tag tag-default">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-timeline">
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-company">Nutrabay</span>
+          <span class="exp-period">Jan 2026 – Present</span>
+        </div>
+        <div class="exp-role">SDE-II (Frontend) · Noida, IN</div>
+        <div class="exp-projects">
+          <div class="exp-project">
+            <div class="exp-project-title">E-commerce Performance & SEO Optimization</div>
+            <div class="exp-project-desc">Overhauled homepage performance pipeline — image compression, responsive image loading, lazy loading, and CDN caching strategy. Deployed WhatsApp notification workflow for drop payment recovery using event-driven dynamic templates.</div>
+            <div class="metric-chips">
+              <span class="chip chip-green">↑ 10% faster page load</span>
+              <span class="chip chip-blue">Core Web Vitals improved</span>
+              <span class="chip chip-yellow">↓ 6% drop payment rate</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="menu-icon">
-        <span class="menu-inner"></span>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <span class="exp-company">India Today Group</span>
+          <span class="exp-period">Oct 2022 – Jan 2026</span>
+        </div>
+        <div class="exp-role">Software Developer (Frontend) · Noida, IN</div>
+        <div class="exp-projects">
+          <div class="exp-project">
+            <div class="exp-project-title">Hello Magazine — App Router Migration</div>
+            <div class="exp-project-desc">Led migration to Next.js App Router with helper-level optimizations and a config-driven UI system for flexible feature rollout across the editorial platform.</div>
+            <div class="metric-chips">
+              <span class="chip chip-green">↑ 35% PageSpeed improvement</span>
+              <span class="chip chip-yellow">↓ 300ms load time</span>
+            </div>
+          </div>
+          <div class="exp-project">
+            <div class="exp-project-title">Aajtakcampus — Full Site Rebuild</div>
+            <div class="exp-project-desc">Ground-up rebuild in React.js with SSR, HTTP caching, and async rendering strategies. Significant FCP improvement and organic traffic growth from improved SEO architecture.</div>
+            <div class="metric-chips">
+              <span class="chip chip-green">↓ 40% FCP reduction</span>
+              <span class="chip chip-blue">↑ 25% organic traffic</span>
+              <span class="chip chip-yellow">SSR + HTTP caching</span>
+            </div>
+          </div>
+          <div class="exp-project">
+            <div class="exp-project-title">Harper's Bazaar — SSO & Caching Architecture</div>
+            <div class="exp-project-desc">Led SSO integration and advanced search. Implemented Redis caching and Akamai CDN for high-traffic reliability. Maintained near-perfect uptime for a flagship editorial brand.</div>
+            <div class="metric-chips">
+              <span class="chip chip-green">99.99% uptime</span>
+              <span class="chip chip-blue">100K monthly users</span>
+              <span class="chip chip-red">Low TBT</span>
+            </div>
+          </div>
+          <div class="exp-project">
+            <div class="exp-project-title">Teen Taal — Social Platform (Mobile-first)</div>
+            <div class="exp-project-desc">Engineered a mobile-first social platform with threaded feeds, rich-media posts, and creator follow system. Web Worker–driven background processing ensured smooth 60fps UI performance.</div>
+            <div class="metric-chips">
+              <span class="chip chip-yellow">Web Workers</span>
+              <span class="chip chip-blue">Mobile-first</span>
+              <span class="chip chip-green">Debounced handlers</span>
+            </div>
+          </div>
+          <div class="exp-project">
+            <div class="exp-project-title">India Today — API & State Architecture</div>
+            <div class="exp-project-desc">Integrated REST APIs with Axios, optimized async data layer using React Query and Redux across the main platform. Improved codebase maintainability significantly.</div>
+            <div class="metric-chips">
+              <span class="chip chip-green">↑ 15% performance</span>
+              <span class="chip chip-blue">React Query + Redux</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="desktop_nav">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid reveal">
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">01</span>
+          <span class="project-arrow">↗</span>
+        </div>
+        <div class="project-title">Travel Torque</div>
+        <div class="project-subtitle">// full-stack booking platform</div>
+        <div class="project-section-label">PROBLEM</div>
+        <div class="project-desc">Travel booking platforms suffer from poor SEO discoverability and slow server responses — critical failure points when organic search is the primary acquisition channel.</div>
+        <div class="project-section-label">ENGINEERING APPROACH</div>
+        <div class="project-desc">Built on Next.js with SSG for static pages and SSR for dynamic booking flows. JWT-secured API layer in Node.js/Express with MongoDB. Schema markup for rich search results.</div>
+        <div class="project-section-label">KEY DECISIONS</div>
+        <div class="project-desc">Chose ISR for destination pages — balances freshness with performance. Schema.org markup for travel products boosts SERP visibility without client-side rendering overhead.</div>
+        <div class="project-tech">
+          <span class="tag tag-accent">Next.js</span>
+          <span class="tag tag-blue">TypeScript</span>
+          <span class="tag tag-default">Node.js</span>
+          <span class="tag tag-default">MongoDB</span>
+          <span class="tag tag-yellow">Schema Markup</span>
+          <span class="tag tag-default">JWT</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <span class="project-arrow">↗</span>
+        </div>
+        <div class="project-title">Lingua Franca</div>
+        <div class="project-subtitle">// club portal + event registration</div>
+        <div class="project-section-label">PROBLEM</div>
+        <div class="project-desc">Student portal needed cross-browser compatibility, smooth performance on low-end devices, and a registration system that handled concurrent submissions reliably.</div>
+        <div class="project-section-label">ENGINEERING APPROACH</div>
+        <div class="project-desc">React + Tailwind CSS with Webpack Analyzer integration for continuous bundle monitoring. Node.js backend with Express for registration API. Cross-browser testing across Chrome, Firefox, Safari.</div>
+        <div class="project-section-label">PERFORMANCE STRATEGY</div>
+        <div class="project-desc">Used Webpack Analyzer to identify and eliminate heavy dependencies. Lazy-loaded event images. Code splitting per route kept initial bundle under 150KB.</div>
+        <div class="project-tech">
+          <span class="tag tag-accent">React</span>
+          <span class="tag tag-default">Tailwind CSS</span>
+          <span class="tag tag-default">Node.js</span>
+          <span class="tag tag-yellow">Webpack Analyzer</span>
+          <span class="tag tag-blue">Cross-browser</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO SHOWCASE -->
+<section id="seo">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Performance & Web Quality</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="seo-grid reveal">
+      <div class="seo-card green">
+        <div class="seo-card-title">Rendering Strategy & Performance</div>
+        <div class="seo-card-desc">
+          Chose the right rendering mode per use case — SSR for dynamic editorial pages, SSG for static content, ISR for product catalogs needing freshness. This directly cut FCP by 40% on rebuilds and improved perceived load speed for end users.<br><br>
+          Combined with <code>next/image</code> for WebP conversion, responsive srcsets, and explicit dimensions to eliminate CLS. Redis + Akamai CDN layer handled 100K monthly users at 99.99% uptime.
+        </div>
+        <div class="seo-score-row">
+          <div class="seo-score"><div class="seo-score-val green">-40%</div><div class="seo-score-label">FCP REDUCTION</div></div>
+          <div class="seo-score"><div class="seo-score-val blue">0.00</div><div class="seo-score-label">CLS SCORE</div></div>
+          <div class="seo-score"><div class="seo-score-val green">99.99%</div><div class="seo-score-label">UPTIME</div></div>
+        </div>
+      </div>
+      <div class="seo-card blue">
+        <div class="seo-card-title">Discoverability & Metadata</div>
+        <div class="seo-card-desc">
+          Implemented <code>JSON-LD</code> schema markup and automated metadata generation so editorial teams never had to touch SEO config manually. Open Graph, canonical URLs, and robots directives managed from a single config layer.<br><br>
+          The combination of SSR-delivered HTML and structured data drove a 25% organic traffic increase post-rebuild — discoverability as an engineering outcome, not an afterthought.
+        </div>
+        <div class="seo-score-row">
+          <div class="seo-score"><div class="seo-score-val green">+25%</div><div class="seo-score-label">ORGANIC TRAFFIC</div></div>
+          <div class="seo-score"><div class="seo-score-val blue">100</div><div class="seo-score-label">LIGHTHOUSE SEO</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERF DASHBOARD -->
+<section id="perf">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Performance Wins</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="perf-grid reveal">
+      <div class="perf-card">
+        <div class="perf-metric-label">FCP · AAJTAKCAMPUS</div>
+        <div class="perf-before-after">
+          <span class="perf-before">~3.2s</span>
+          <span class="perf-arrow">→</span>
+          <span class="perf-after">~1.9s</span>
+        </div>
+        <div class="perf-unit">First Contentful Paint</div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label"><span>improvement</span><span>40%</span></div>
+          <div class="perf-bar"><div class="perf-bar-fill" style="width:40%"></div></div>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-metric-label">PAGESPEED · HELLO MAGAZINE</div>
+        <div class="perf-before-after">
+          <span class="perf-before">~60</span>
+          <span class="perf-arrow">→</span>
+          <span class="perf-after">~82</span>
+        </div>
+        <div class="perf-unit">PageSpeed Score</div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label"><span>improvement</span><span>35%</span></div>
+          <div class="perf-bar"><div class="perf-bar-fill" style="width:35%"></div></div>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-metric-label">LOAD TIME · NUTRABAY</div>
+        <div class="perf-before-after">
+          <span class="perf-before">—</span>
+          <span class="perf-arrow">→</span>
+          <span class="perf-after">-10%</span>
+        </div>
+        <div class="perf-unit">Page Load Time Reduction</div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label"><span>CDN + lazy load</span><span>10%</span></div>
+          <div class="perf-bar"><div class="perf-bar-fill" style="width:10%"></div></div>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-metric-label">PAGESPEED · OVERALL</div>
+        <div class="perf-before-after">
+          <span class="perf-before">~55</span>
+          <span class="perf-arrow">→</span>
+          <span class="perf-after">~77</span>
+        </div>
+        <div class="perf-unit">Avg Score Improvement</div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label"><span>across projects</span><span>40%</span></div>
+          <div class="perf-bar"><div class="perf-bar-fill" style="width:40%"></div></div>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-metric-label">UPTIME · HARPER'S BAZAAR</div>
+        <div class="perf-before-after">
+          <span class="perf-before">—</span>
+          <span class="perf-arrow">→</span>
+          <span class="perf-after">99.99%</span>
+        </div>
+        <div class="perf-unit">Availability (Redis + Akamai)</div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label"><span>100K users/month</span><span>99.99%</span></div>
+          <div class="perf-bar"><div class="perf-bar-fill" style="width:99.9%"></div></div>
+        </div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-metric-label">ORGANIC TRAFFIC · AAJTAKCAMPUS</div>
+        <div class="perf-before-after">
+          <span class="perf-before">—</span>
+          <span class="perf-arrow">→</span>
+          <span class="perf-after">+25%</span>
+        </div>
+        <div class="perf-unit">Traffic via SSR + SEO</div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label"><span>post-rebuild</span><span>25%</span></div>
+          <div class="perf-bar"><div class="perf-bar-fill" style="width:25%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="stack">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Recommended Stack</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <p style="font-size:13px;color:var(--muted);margin-bottom:32px;max-width:560px;" class="reveal">
+      Recommended architecture for this portfolio itself — every choice justified by engineering tradeoffs, not trend-chasing.
+    </p>
+
+    <div class="stack-section-title reveal">// core framework</div>
+    <div class="stack-grid reveal" style="margin-bottom:16px;">
+      <div class="stack-item">
+        <div class="stack-item-name">Next.js 14+</div>
+        <div class="stack-item-role">App Router · SSG + ISR</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">TypeScript</div>
+        <div class="stack-item-role">Strict mode · Type safety</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">Tailwind CSS</div>
+        <div class="stack-item-role">Utility-first · Zero runtime</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">Framer Motion</div>
+        <div class="stack-item-role">Scroll animations · Gestures</div>
+      </div>
+    </div>
+
+    <div class="stack-section-title reveal">// content & seo</div>
+    <div class="stack-grid reveal" style="margin-bottom:16px;">
+      <div class="stack-item">
+        <div class="stack-item-name">MDX</div>
+        <div class="stack-item-role">Case studies · Blog</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">next-seo</div>
+        <div class="stack-item-role">Metadata · Open Graph</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">next-sitemap</div>
+        <div class="stack-item-role">Auto sitemap generation</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">Schema.org JSON-LD</div>
+        <div class="stack-item-role">Person · Project markup</div>
+      </div>
+    </div>
+
+    <div class="stack-section-title reveal">// devex & deployment</div>
+    <div class="stack-grid reveal" style="margin-bottom:40px;">
+      <div class="stack-item">
+        <div class="stack-item-name">Vercel</div>
+        <div class="stack-item-role">Edge network · Analytics</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">Lighthouse CI</div>
+        <div class="stack-item-role">Perf budget · CI gate</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">Playwright</div>
+        <div class="stack-item-role">E2E · Visual regression</div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-item-name">Bundle Analyzer</div>
+        <div class="stack-item-role">Webpack · Tree shaking</div>
+      </div>
+    </div>
+
+    <div class="stack-section-title reveal">// folder structure</div>
+    <div class="folder-tree reveal">
+      <div class="folder-header">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+      </div>
+      <div class="folder-body">
+        <div><span class="f-dir">src/</span></div>
+        <div class="indent1"><span class="f-dir">app/</span> <span class="f-comment">— App Router pages</span></div>
+        <div class="indent2"><span class="f-file">layout.tsx</span> <span class="f-comment">— root layout, metadata</span></div>
+        <div class="indent2"><span class="f-file">page.tsx</span> <span class="f-comment">— homepage (SSG)</span></div>
+        <div class="indent2"><span class="f-dir">projects/[slug]/</span></div>
+        <div class="indent3"><span class="f-file">page.tsx</span> <span class="f-comment">— ISR case studies</span></div>
+        <div class="indent2"><span class="f-dir">blog/[slug]/</span></div>
+        <div class="indent3"><span class="f-file">page.tsx</span> <span class="f-comment">— MDX posts</span></div>
+        <div class="indent1"><span class="f-dir">components/</span></div>
+        <div class="indent2"><span class="f-dir">ui/</span> <span class="f-comment">— atoms (Button, Tag, Badge)</span></div>
+        <div class="indent2"><span class="f-dir">sections/</span> <span class="f-comment">— page sections</span></div>
+        <div class="indent2"><span class="f-dir">layout/</span> <span class="f-comment">— Nav, Footer</span></div>
+        <div class="indent1"><span class="f-dir">content/</span></div>
+        <div class="indent2"><span class="f-dir">projects/</span> <span class="f-comment">— MDX case studies</span></div>
+        <div class="indent2"><span class="f-file">resume.ts</span> <span class="f-comment">— typed data source</span></div>
+        <div class="indent1"><span class="f-dir">lib/</span></div>
+        <div class="indent2"><span class="f-file">seo.ts</span> <span class="f-comment">— metadata helpers</span></div>
+        <div class="indent2"><span class="f-file">mdx.ts</span> <span class="f-comment">— MDX parsing utils</span></div>
+        <div class="indent2"><span class="f-file">analytics.ts</span></div>
+        <div class="indent1"><span class="f-dir">styles/</span></div>
+        <div class="indent2"><span class="f-file">globals.css</span></div>
+        <div class="indent2"><span class="f-file">tokens.css</span> <span class="f-comment">— design tokens</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLEMENTATION ROADMAP -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Implementation Roadmap</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="roadmap-grid reveal">
+      <div class="roadmap-phase">
+        <div class="phase-label">PHASE 01 · Week 1–2</div>
+        <div class="phase-name">Foundation</div>
+        <ul class="phase-items">
+          <li>Next.js 14 + TS setup</li>
+          <li>Tailwind config + tokens</li>
+          <li>Folder structure</li>
+          <li>SEO metadata layer</li>
+          <li>Hero + Nav sections</li>
+          <li>Lighthouse CI config</li>
         </ul>
       </div>
-
-      <div class="mobile_nav">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+      <div class="roadmap-phase">
+        <div class="phase-label">PHASE 02 · Week 3–4</div>
+        <div class="phase-name">Core Sections</div>
+        <ul class="phase-items">
+          <li>About + Skills sections</li>
+          <li>Experience timeline</li>
+          <li>Resume data as typed TS</li>
+          <li>MDX project setup</li>
+          <li>Schema.org JSON-LD</li>
+          <li>Sitemap generation</li>
         </ul>
       </div>
-    </header>
-
-    <section class="banner">
-      <div class="developer-bio">
-        <p>Hello</p>
-        <h2>I am<span>Aryaman</span></h2>
-        <h3>Professional Software Developer</h3>
-        <a
-          href="https://drive.google.com/file/d/1Y1dbplAjT36Z78B2SMfgDUGIgxmaBAFx/view?usp=sharing"
-          target="_blank"
-          class="btn"
-          >Resume</a
-        >
+      <div class="roadmap-phase">
+        <div class="phase-label">PHASE 03 · Week 5–6</div>
+        <div class="phase-name">Polish & Animations</div>
+        <ul class="phase-items">
+          <li>Framer Motion setup</li>
+          <li>Scroll-based reveals</li>
+          <li>Terminal hero anim</li>
+          <li>Perf dashboard viz</li>
+          <li>Project case studies</li>
+          <li>Mobile responsive</li>
+        </ul>
       </div>
-      <div class="developer-img">
-        <img src="./assets/images/developer.svg" class="img-fluid" />
+      <div class="roadmap-phase">
+        <div class="phase-label">PHASE 04 · Week 7–8</div>
+        <div class="phase-name">Launch & Optimize</div>
+        <ul class="phase-items">
+          <li>Lighthouse audit ≥ 95</li>
+          <li>Core Web Vitals pass</li>
+          <li>GSC verification</li>
+          <li>Vercel deploy + CDN</li>
+          <li>Analytics setup</li>
+          <li>Blog system (optional)</li>
+        </ul>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="about" id="about">
-      <h2 class="about_heading">About me</h2>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-label">// open to work</div>
+  <h2 class="contact-title">Let's build<br><span style="font-family:var(--serif);font-style:italic;color:var(--accent)">something fast.</span></h2>
+  <p class="contact-sub">Senior Frontend Engineer · Next.js · Performance · SEO · Based in Gurgaon, IN</p>
+  <a href="mailto:aryamanyash11@gmail.com" class="btn btn-primary" style="margin-bottom:40px;font-size:13px;">aryamanyash11@gmail.com ↗</a>
+  <div class="contact-links">
+    <a class="contact-link" href="https://www.linkedin.com/in/aryamansingh11/" target="_blank">LinkedIn</a>
+    <span class="contact-divider">·</span>
+    <a class="contact-link" href="tel:+917068035616">+91 70680 35616</a>
+    <span class="contact-divider">·</span>
+    <span class="contact-link">Gurgaon, Haryana, IN</span>
+  </div>
+</section>
 
-      <div class="about-content row">
-        <div class="about-image col-md-4">
-          <img
-            src="/assets/images/dp1.jpeg"
-            class="img-fluid"
-          />
-        </div>
+<script>
+// TYPEWRITER
+const phrases = [
+  'Next.js App Router · SSR · ISR · SSG',
+  'Core Web Vitals · LCP · FID · CLS',
+  'TypeScript · React · Tailwind CSS',
+  'Performance Engineer · SEO Architect',
+];
+let pi = 0, ci = 0, del = false;
+const el = document.getElementById('typed-text');
+function type() {
+  const cur = phrases[pi];
+  if (!del) {
+    el.textContent = cur.slice(0, ++ci);
+    if (ci === cur.length) { del = true; setTimeout(type, 2000); return; }
+    setTimeout(type, 55);
+  } else {
+    el.textContent = cur.slice(0, --ci);
+    if (ci === 0) { del = false; pi = (pi+1) % phrases.length; setTimeout(type, 400); return; }
+    setTimeout(type, 28);
+  }
+}
+type();
 
-        <div class="about-desc col-md-8">
-          <h2 class="about-title">Hello There!</h2>
-          <h4 class="about-subtitle">A Professional Web Developer</h4>
-          <p>
-           I’m Aryaman Singh, a results-oriented web developer proficient in crafting innovative digital experiences. With a strong foundation in TypeScript, React, Next.js, and Angular, I build scalable and high-performing applications. Leveraging the power of Node.js, Firebase, AWS, and other cloud platforms, I deliver full-stack solutions from concept to deployment. Let's create exceptional digital products together.
-          </p>
-          <!-- <p>
-            I enjoy creating beautifully designed, intuitive and functional
-            websites.
-          </p> -->
-        </div>
-      </div>
-    </section>
+// SCROLL REVEAL
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    <section class="education" id="education">
-      <h2 class="education-heading">Education</h2>
+// PERF BAR ANIMATION
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.perf-bar-fill').forEach(b => {
+        const w = b.style.width;
+        b.style.width = '0';
+        setTimeout(() => b.style.width = w, 100);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.perf-grid').forEach(g => barObs.observe(g));
 
-      <div class="education-content">
-        <div class="education-item">
-          <i class="education-icon fa fa-graduation-cap"></i>
-          <div class="education-details">
-            <h3 class="education-institution">
-              JSS Academy of Technical Education , Noida
-            </h3>
-            <h4 class="education-years">2018 - 2022</h4>
-            <h4 class="education-career">
-              Bachelor's Degree, Information Technology
-            </h4>
-            <p class="education-description">
-              Grades : CGPA - 8.6 
-            </p>
-          </div>
-        </div>
+// FLOATING WORDS
+const words = [
+  { t: 'React.js',        cls: '' },
+  { t: 'Next.js',         cls: 'slate' },
+  { t: 'TypeScript',      cls: 'slate' },
+  { t: 'SSR',             cls: '' },
+  { t: 'ISR',             cls: '' },
+  { t: 'SSG',             cls: '' },
+  { t: 'useCallback()',   cls: 'slate' },
+  { t: 'lazy loading',    cls: '' },
+  { t: 'Tailwind CSS',    cls: 'slate' },
+  { t: 'Core Web Vitals', cls: 'warm' },
+  { t: 'LCP',             cls: 'warm' },
+  { t: 'CLS: 0.00',       cls: 'warm' },
+  { t: 'webpack',         cls: '' },
+  { t: 'App Router',      cls: 'slate' },
+  { t: 'const [',         cls: 'slate' },
+  { t: 'useState()',      cls: 'slate' },
+  { t: 'CDN cache',       cls: '' },
+  { t: 'bundle split',    cls: 'warm' },
+  { t: 'Redis',           cls: 'slate' },
+  { t: 'Web Workers',     cls: '' },
+  { t: 'a11y',            cls: '' },
+  { t: '<Suspense>',      cls: 'slate' },
+  { t: 'import()',        cls: 'warm' },
+  { t: 'JSON-LD',         cls: '' },
+  { t: 'Akamai CDN',      cls: 'warm' },
+  { t: 'FCP',             cls: 'warm' },
+  { t: 'debounce()',      cls: 'slate' },
+  { t: 'async/await',     cls: 'slate' },
+];
+const container = document.getElementById('floating-words');
+words.forEach((w, i) => {
+  const el = document.createElement('span');
+  el.className = 'fw' + (w.cls ? ' ' + w.cls : '');
+  el.textContent = w.t;
+  const left = 5 + Math.random() * 88;
+  const top  = 10 + Math.random() * 78;
+  const dur  = 9 + Math.random() * 14;
+  const delay = -(Math.random() * dur);
+  el.style.cssText = `left:${left}%;top:${top}%;animation-duration:${dur}s;animation-delay:${delay}s`;
+  container.appendChild(el);
+});
 
-        <div class="education-item">
-          <i class="education-icon fa fa-graduation-cap"></i>
-          <div class="education-details">
-            <h3 class="education-institution">Fatima Convent School</h3>
-            <h4 class="education-years">2016 - 2017</h4>
-            <h4 class="education-career">Class - XII ICSC</h4>
-            <p class="education-description">
-              Grades : Percentage - 80.5%
-            </p>
-          </div>
-        </div>
-
-        <!-- <div class="education-item">
-                    <i class="education-icon fa fa-graduation-cap"></i>
-                    <div class="education-details">
-                        <h3 class="education-institution">University of Cambridge</h3>
-                        <h4 class="education-years">2019 - 2021</h4>
-                        <h4 class="education-career">Android Developer</h4>
-                        <p class="education-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Inventore, aut error placeat iusto ut, dolores
-                            quaerat aspernatur quam nobis, itaque illo beatae
-                            velit porro. Consequuntur amet velit officiis
-                            tenetur cupiditate.
-                        </p>
-                    </div>
-                </div> -->
-      </div>
-    </section>
-
-    <section class="skills" id="skills">
-      <h2 class="skills_heading">Skills</h2>
-
-      <div class="skill-content">
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-right slide-in"
-              data="./assets/icons/skills/html5.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">HTML5</h3>
-        </div>
-
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-right slide-in"
-              data="./assets/icons/skills/css3.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">CSS3</h3>
-        </div>
-
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-right slide-in"
-              data="./assets/icons/skills/javascript.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Javascript</h3>
-        </div>
-
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-right slide-in"
-              data="./assets/icons/skills/node-dot-js.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Node JS</h3>
-        </div>
-
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/mongodb.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Mongo DB</h3>
-        </div>
-
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/express.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Express JS</h3>
-        </div>
-
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/react.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">React JS</h3>
-        </div>
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/next.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Next JS</h3>
-        </div>
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/typescript.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">TypeScript</h3>
-        </div>
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/java.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Java8</h3>
-        </div>
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/springboot.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">SpringBoot</h3>
-        </div>
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/redis.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Redis</h3>
-        </div>
-        <div class="skill">
-          <div class="skill-img-container" data-aos="zoom-in">
-            <object
-              class="slide-left slide-in"
-              data="./assets/icons/skills/firebase-icon.svg"
-            ></object>
-          </div>
-          <h3 class="skill-title">Firebase</h3>
-        </div>
-      </div>
-       
-      </div>
-
-        
-      </div>
-    </section>
-
-    <section class="projects" id="projects">
-      <h2 class="projects_heading">Projects</h2>
-
-       
-
-      <div class="project-wrapper row">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <a href="https://www.aajtakcampus.in/" target="_blank">
-              <div class="cards-container">
-                  <div class="card-background">
-                      <img src="./assets/images/campus.png" class="img-fluid" />
-                  </div>
-                  <div class="card-desc">
-                      <h6>Aajtak Campus</h6>
-                      <h4>React JS, Redux Toolkit, Next.js, Typescript</h4>
-                      <p>Click to Open.</p>
-                  </div>
-              </div>
-          </a>
-      </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <a href="https://www.harpersbazaar.in/" target="_blank">
-            <div class="cards-container">
-              <div class="card-background">
-                <img src="./assets/images/harpers.png" class="img-fluid" />
-              </div>
-              <div class="card-desc">
-                <h6>Harper's Bazar</h6>
-                <h4>Javascript , React.js, SCSS, Redis, Akamai</h4>
-                <p>Click to Open</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <a href="https://github.com/aryaman7379/travel-torque" target="_blank">
-            <div class="cards-container">
-              <div class="card-background">
-                <img src="./assets/images/travelTorque.png" class="img-fluid" />
-              </div>
-              <div class="card-desc">
-                <h4>Booking Application</h4>
-                <h6>React.js , Node.js , MongoDB , Tailwind , Express.js</h6>
-                <p>Click to Open</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <a href="https://github.com/aryaman7379/interior-design" target="_blank">
-            <div class="cards-container">
-              <div class="card-background">
-                <img src="./assets/images/interior.png" class="img-fluid" />
-              </div>
-              <div class="card-desc">
-                <h4>Interior Design</h4>
-                <h6>React JS, Redux, Firebase</h6>
-                <p>Click to Open</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <a href="https://linguafrancaa.netlify.app/" target="_blank">
-            <div class="cards-container">
-              <div class="card-background">
-                <img src="./assets/images/linguaFranca.png" class="img-fluid" />
-              </div>
-              <div class="card-desc">
-                <h6>Lingua Franca</h6>
-                <h4>React Js, Node JS, MongoDB</h4>
-                <p>Click to Open</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <a href="https://github.com/aryaman7379/quizApp" target="_blank">
-            <div class="cards-container">
-              <div class="card-background">
-                <img
-                  src="./assets/images/quizApp.png"
-                  class="img-fluid"
-                />
-              </div>
-              <div class="card-desc">
-                <h6>QuizApp</h6>
-                <h4>Java , Springboot , hibernate</h4>
-                <p>Click to Open</p>
-              </div>
-            </div>
-          </a>
-        </div>
-          
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <h2 class="contact_heading">Contact Me</h2>
-    </section>
-
-    <footer>
-      <div class="footer-container">
-        <div class="upper-footer">
-          <div class="social-contact">
-            <h2>Contact:</h2>
-            <p>Let us be Social.</p>
-            <div class="list-group list-group-horizontal">
-              <a target="_blank" href="https://github.com/aryaman7379"
-                ><i class="fa fa-github"></i
-              ></a>
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/aryamansingh11/"
-                ><i class="fa fa-linkedin"></i
-              ></a>
-              <!-- <a target="_blank" href="https://twitter.com/sharma_vaibhav1"
-                ><i class="fa fa-twitter"></i
-              ></a> -->
-              <!-- <a href="#"><i class="fa fa-codepen"></i></a>
-              <a href="#"><i class="fa fa-medium"></i></a>
-              <a href="#"><i class="fa fa-slack"></i></a>
-              <a href="#"><i class="fa fa-stack-overflow"></i></a> -->
-            </div>
-          </div>
-
-          <div class="address-contact">
-            <h2>Address:</h2>
-            <p>Get in touch.</p>
-            <div class="list-group list-group-horizontal">
-              <a
-                href="https://maps.app.goo.gl/vc4FN1Ht6NYPJ1Gu7"
-                target="_blank"
-                ><i class="fa fa-map-marker"></i
-              ></a>
-              <a href="mailto:aryamanyash11@gmail.com"
-                ><i class="fa fa-envelope"></i
-              ></a>
-              <a href="tel:7068035616"><i class="fa fa-phone"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
+// ACTIVE NAV
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.style.color = l.getAttribute('href') === '#'+e.target.id ? 'var(--text)' : '');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => navObs.observe(s));
+</script>
+</body>
 </html>
